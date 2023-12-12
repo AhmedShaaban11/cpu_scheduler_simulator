@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.cpu.scheduler.simulator.Controller">
+    <!-- Input Fields for Number of Processes, Time Quantum, and Context Switching -->
+    <HBox spacing="10">
+        <Label text="Number of Processes:"/>
+        <TextField fx:id="numProcessesField" onKeyTyped="#makeFields"/>
+        <Label text="Round Robin Time Quantum:"/>
+        <TextField fx:id="timeQuantumField"/>
+        <Label text="Context Switching:"/>
+        <TextField fx:id="contextSwitchingField"/>
+    </HBox>
+
+    <!-- Generate Process Elements Dynamically -->
+    <VBox fx:id="processElementsContainer" spacing="10"/>
+
+    <!-- Algorithm Choice -->
+    <HBox spacing="10">
+        <Label text="Choose Algorithm:"/>
+        <ComboBox fx:id="algorithmChoice" value="All">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Priority"/>
+                    <String fx:value="RoundRobin"/>
+                    <String fx:value="All"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </HBox>
+
+    <!-- Generate Button -->
+    <Button text="Generate" onAction="#generate"/>
+</VBox>
